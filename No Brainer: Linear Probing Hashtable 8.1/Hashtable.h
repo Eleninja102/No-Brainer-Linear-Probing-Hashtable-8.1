@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <memory>
+#include <math.h> 
+
 
 using namespace std;
 
@@ -37,9 +39,10 @@ public:
 	friend ostream& operator<< <>(ostream &, Hashtable<Type>&);
 
 private:
-	int hash(int v) const;
+	int hash(Type v) const;
 	int capacity;
 	int size;
+    unique_ptr<Bucket<Type> []> htable;
 };
 
 
@@ -66,6 +69,13 @@ Hashtable<Type>::Hashtable(int capacity) : capacity(capacity)
 template<class Type>
 Hashtable<Type>::Hashtable(const Hashtable<Type>& other)
 {
+    capacity = other.capacity;
+    size = other.size;
+    htable = make_unique<Bucket<Type>[]>(capacity);
+    for(int i = 0; i < capacity; i++){
+        htable[i]  = other.htable[i];
+    }
+
 
 }
 
@@ -75,6 +85,15 @@ Hashtable<Type>::Hashtable(const Hashtable<Type>& other)
 template<class Type>
 Hashtable<Type>& Hashtable<Type>::operator=(const Hashtable<Type>& other)
 {
+    capacity = other.capacity;
+    size = other.size;
+    htable = make_unique<Bucket<Type>[]>(capacity);
+    for(int i = 0; i < capacity; i++){
+        htable[i]  = other.htable[i];
+    }
+
+
+
 
 	return *this;
 }
@@ -84,8 +103,9 @@ Hashtable<Type>& Hashtable<Type>::operator=(const Hashtable<Type>& other)
 	Complete the hash method to create a modulus division hash algorithm
 */
 template<class Type>
-int Hashtable<Type>::hash(int v) const {
-	return 0;
+int Hashtable<Type>::hash(Type v) const {
+    
+	return fmod(v, capacity);
 }
 
 template<class Type>
@@ -119,6 +139,15 @@ bool Hashtable<Type>::empty() const
 template<class Type>
 void Hashtable<Type>::insert(Type value)
 {
+    if(size>= capacity){
+        throw runtime_error("Hashtable Full");
+    }
+    int i = 0;
+    while(!htable[hash(value + i)].empty){
+        i++;
+    }
+    htable[hash(value + i)] = {value, false};
+    size++;
 
 }
 
@@ -128,7 +157,17 @@ void Hashtable<Type>::insert(Type value)
 template<class Type>
 void Hashtable<Type>::remove(int value)
 {
-	
+
+    int i = 0;
+    while(htable[hash(value + i)].data != value && i < capacity) {
+        i++;
+    }
+    if(i == capacity){
+        return;
+    }
+    htable[hash(value + i)] = {NULL, true};
+    size--;
+
 
 
 }
@@ -138,6 +177,14 @@ void Hashtable<Type>::remove(int value)
 */
 template<class Type>
 bool Hashtable<Type>::contains(int value) const {
+    int i = 0;
+    while(htable[hash(value + i)].data != value && i < capacity) {
+        i++;
+    }
+    if(htable[hash(value + i)].data == value){
+        return true;
+    }
+
 	
 	return false;
 }

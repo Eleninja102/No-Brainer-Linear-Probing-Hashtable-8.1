@@ -36,7 +36,7 @@ int main()
 	else {
 		cout << "Oops, keep trying " << endl;
 	}
-	system("pause");
+	//system("pause");
 	return 0;
 }
 
