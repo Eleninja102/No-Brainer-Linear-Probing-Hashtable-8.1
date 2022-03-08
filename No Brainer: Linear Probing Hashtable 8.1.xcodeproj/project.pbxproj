@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D83979527D722CD00E2EC30 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D83979427D722CD00E2EC30 /* main.cpp */; };
+		1D83979D27D722E500E2EC30 /* LinearHashtabletesting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D83979B27D722E500E2EC30 /* LinearHashtabletesting.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		1D83979127D722CD00E2EC30 /* No Brainer: Linear Probing Hashtable 8.1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "No Brainer: Linear Probing Hashtable 8.1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D83979427D722CD00E2EC30 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1D83979B27D722E500E2EC30 /* LinearHashtabletesting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinearHashtabletesting.cpp; sourceTree = "<group>"; };
+		1D83979C27D722E500E2EC30 /* Hashtable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hashtable.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				1D83979427D722CD00E2EC30 /* main.cpp */,
+				1D83979C27D722E500E2EC30 /* Hashtable.h */,
+				1D83979B27D722E500E2EC30 /* LinearHashtabletesting.cpp */,
 			);
 			path = "No Brainer: Linear Probing Hashtable 8.1";
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D83979D27D722E500E2EC30 /* LinearHashtabletesting.cpp in Sources */,
 				1D83979527D722CD00E2EC30 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
