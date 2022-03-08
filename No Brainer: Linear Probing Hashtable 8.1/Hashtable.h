@@ -190,7 +190,6 @@ bool Hashtable<Type>::contains(int value) const {
 }
 
 
-
 template<class Type>
 void Hashtable<Type>::clear()
 {
